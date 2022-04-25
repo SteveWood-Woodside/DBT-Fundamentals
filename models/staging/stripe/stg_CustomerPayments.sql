@@ -1,4 +1,5 @@
-
+with CP AS
+(
 
     SELECT
         O.CUSTOMER_ID,
@@ -12,5 +13,7 @@
             O.ORDER_ID = P.ORDERID
     WHERE
         P.PAYMENTSTATUS = 'success'
+)
+    SELECT * FROM CP         
     GROUP BY
         O.CUSTOMER_ID        
