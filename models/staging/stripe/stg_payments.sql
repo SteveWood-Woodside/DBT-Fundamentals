@@ -5,9 +5,9 @@ WITH P AS
         ORDERID AS orderID,
         paymentMethod,
         "STATUS" AS paymentStatus,
-        AMOUNT as orderAmount,
+        AMOUNT/100 as orderAmount,
         CREATED as orderDate
     FROM
-        raw.stripe.payment
+        {{ source('stripe', 'payment') }}--raw.stripe.payment
 )
 SELECT * FROM P
